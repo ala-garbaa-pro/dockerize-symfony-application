@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+    # Symfony application
+    php-fpm:
+        build: ./php-fpm
+        container_name: fs_symfony_php_fpm
+        volumes:
+            - ./app:/var/www/app
+            - ./php-fpm/conf/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+            - ./php-fpm/conf/php.ini:/usr/local/etc/php/php.ini
+        links:
+            - "symf_mysql"
+        ports:
+            - "9000:9000"
+        depends_on:
+            - "symf_mysql"
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=symf_mysql"
+
+    nginx:
+        build:
+            context: ./nginx
+        container_name: fs_symfony_nginx
+        ports:
+            - "81:80"
+        links:
+            - php-fpm
+        volumes_from:
+            - php-fpm
+        volumes:
+            - ./nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf
+            - ./nginx/conf/symfony_app.conf:/etc/nginx/conf.d/symfony_app.conf
+            - ./logs/nginx/:/var/log/nginx
+
+    # The Database
+    symf_mysql:
+        image: mysql:latest
+        container_name: fs_symfony_mysql
+        volumes:
+            - "./db:/docker-entrypoint-initdb.d"
+            - "./db/dbdata:/var/lib/mysql"
+        environment:
+            - "MYSQL_DATABASE=fellowship"
+            - "MYSQL_USER=fellowship"
+            - "MYSQL_PASSWORD=secret"
+            - "MYSQL_ROOT_PASSWORD=root"
+        ports:
+            - "33062:3306"

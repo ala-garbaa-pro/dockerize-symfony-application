@@ -1,0 +1,19 @@
+# Mysql data
+
+
+# Log
+/logs/*
+
+# Project
+/app/*
+
+# Database
+/db/*.sql
+/db/dbdata/*
+
+# Other file types
+/**/*.yml-e
+*.swp
+*.swo
+.DS_Store
+/nbproject/private/
