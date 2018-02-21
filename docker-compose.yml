@@ -19,6 +19,7 @@ services:
             - "DB_PORT=3306"
             - "DB_HOST=symf_mysql"
 
+    # Webserver
     nginx:
         build:
             context: ./nginx
