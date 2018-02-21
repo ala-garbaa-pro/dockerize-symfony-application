@@ -30,8 +30,6 @@ services:
         volumes_from:
             - php-fpm
         volumes:
-            - ./nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf
-            - ./nginx/conf/symfony_app.conf:/etc/nginx/conf.d/symfony_app.conf
             - ./logs/nginx/:/var/log/nginx
 
     # The Database
