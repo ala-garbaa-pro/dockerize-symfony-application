@@ -1,15 +1,15 @@
-# Mysql data
-
-
 # Log
 /logs/*
+!/logs/.gitignore
 
 # Project
-/app/*
+/symfony/*
+!/symfony/.gitignore
 
 # Database
 /db/*.sql
 /db/dbdata/*
+!/db/.gitignore
 
 # Other file types
 /**/*.yml-e

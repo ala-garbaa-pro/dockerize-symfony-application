@@ -2,7 +2,7 @@ FROM php:7.1-fpm
 
 MAINTAINER Damber Prasad Gautam <damber.gautam@gmail.com>
 
-ENV WORKDIR "/var/www/app"
+ENV WORKDIR "/var/www/symfony"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \

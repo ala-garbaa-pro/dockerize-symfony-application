@@ -14,23 +14,33 @@ git clone https://github.com/dambergautam/symfony-docker.git symfony-docker
 
 ```
 cd symfony-docker
-git clone <url>
+composer create-project symfony/framework-standard-edition symfony "3.4.*" -vvv
+
+# Above command will download fresh Symfony (version 3.4.*) project in `symfony` directory
+# `-vvv` flag will display a detailed output of everything that Composer is doing.
 ```
 
-**Setup laravel project**
+During the installation process, you will need to provide some missing parameters
+to create parameters.yml file. Example below for reference-
 
 ```
-cd symfony-docker/app
-
-# Add env file
-cp .env.example .env
-
-# Adjust your environment variables
+database_host: symf_mysql
+database_port: 33062
+database_name: fellowship
+database_user: fellowship
+database_password: secret
+mailer_transport: smtp
+mailer_host: yoursmtp.host.net
+mailer_user: null
+mailer_password: null
+secret: ThisTokenIsNotSoSecretChangeIt
 ```
+
+:exclamation: Make sure you adjust these parameters same as in `docker-compose.yml` file.
+
+:information_desk_person: You can always update those parameters from `symfony/config/parameters.yml` file.
 
 Next, add symfony.dev in your /etc/hosts file.
-
-Make sure you adjust database environment in `docker-compose.yml` same as `app/.env` file.
 
 **Then, run:**
 
@@ -38,4 +48,4 @@ Make sure you adjust database environment in `docker-compose.yml` same as `app/.
 $ docker-compose up --build
 ```
 
-Hurry!! now visit your Symfony application on the following URL: http://symfony.dev:8080
+:+1: All done!! now visit your Symfony application location on the following URL: http://symfony.dev:81
