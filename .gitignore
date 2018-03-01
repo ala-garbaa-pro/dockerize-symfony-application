@@ -3,8 +3,9 @@
 !/logs/.gitignore
 
 # Project
-/symfony/*
-!/symfony/.gitignore
+/src-*/*
+!/src-*/.gitignore
+
 
 # Database
 /db/*.sql

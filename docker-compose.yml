@@ -6,7 +6,8 @@ services:
         build: ./php-fpm
         container_name: fs_symfony_php_fpm
         volumes:
-            - ./symfony:/var/www/symfony
+            #- ./src-practice:/var/www/symfony
+            - ./src-fellowship:/var/www/symfony
             - ./php-fpm/conf/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
             - ./php-fpm/conf/php.ini:/usr/local/etc/php/php.ini
         links:
