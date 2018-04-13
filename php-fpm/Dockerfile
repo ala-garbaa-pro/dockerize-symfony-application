@@ -44,6 +44,9 @@ RUN docker-php-ext-install mbstring
 #    && docker-php-ext-enable xdebug redis \
 #    && docker-php-source delete
 
+# PHP Zip Archive
+RUN apt-get install -y zlib1g-dev \
+    && docker-php-ext-install zip
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | \
